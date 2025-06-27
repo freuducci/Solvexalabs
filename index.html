@@ -1,975 +1,618 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solvexa Labs - Digital Innovation Studio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1e3a8a',
-            secondary: '#2563eb',
-            accent: '#3b82f6',
-            background: '#f0f4ff',
-            dark: '#0f172a',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Plus | Studio d'enregistrement professionnel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #000;
+            --text-color: #fff;
+            --accent-color: #D4AF37;
+            --card-bg: rgba(0, 0, 0, 0.8);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
-    
-    .hero-slide {
-      animation: fadeIn 1s ease-in-out;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    .section-hidden {
-      opacity: 0;
-      transform: translateY(8rem);
-      transition: all 1s;
-    }
-    
-    .section-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 99;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-    }
-    
-    .back-to-top.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    .work-item:hover .work-overlay {
-      opacity: 1;
-    }
-    
-    .nav-link {
-      position: relative;
-    }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #2563eb;
-      transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    
-    .testimonial-card {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .gradient-text {
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      background-image: linear-gradient(90deg, #1e3a8a, #3b82f6);
-    }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    }
-    
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-    
-    .mobile-menu.open {
-      max-height: 500px;
-    }
-  </style>
+        
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --accent-color: #D4AF37;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+        .light-mode .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+        .light-mode .service-card,
+        .light-mode .bg-gray-900,
+        .light-mode .bg-black {
+            background-color: #f8f9fa !important;
+            color: #333333 !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        .light-mode .text-gray-300,
+        .light-mode .text-gray-400 {
+            color: #666666 !important;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .sound-wave {
+            position: relative;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .wave {
+            position: absolute;
+            width: 5px;
+            height: 100%;
+            background: #D4AF37;
+            border-radius: 50px;
+            transform-origin: bottom;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% {
+                transform: scaleY(0.3);
+            }
+            50% {
+                transform: scaleY(1);
+            }
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-  <!-- Navbar -->
-  <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-md z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-20 items-center">
-        <div class="flex items-center">
-          <a href="#" class="text-2xl font-bold text-primary dark:text-white flex items-center">
-            <span class="gradient-text">SolvexaLabs</span>
-            <span class="ml-2 text-xs bg-accent text-white px-2 py-1 rounded-full">PRO</span>
-          </a>
+<body class="bg-black text-white">
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-90 fixed w-full z-50" style="background-color: var(--bg-color) !important;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-gold-500 font-bold text-2xl">STUDIO<span class="text-yellow-500">+</span></span>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="text-xl focus:outline-none mr-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+                        <span id="theme-icon"><i class="fas fa-sun"></i></span>
+                    </button>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">À propos</a>
+                        <a href="#services" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#booking" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Réservation</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Témoignages</a>
+                        <a href="#contact" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-300 hover:text-yellow-500 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-        
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#home" class="nav-link hover:text-primary dark:hover:text-accent">Home</a>
-          <a href="#about" class="nav-link hover:text-primary dark:hover:text-accent">About</a>
-          <a href="#services" class="nav-link hover:text-primary dark:hover:text-accent">Services</a>
-          <a href="#work" class="nav-link hover:text-primary dark:hover:text-accent">Work</a>
-          <a href="#testimonials" class="nav-link hover:text-primary dark:hover:text-accent">Testimonials</a>
-          <a href="#contact" class="nav-link hover:text-primary dark:hover:text-accent">Contact</a>
-          <button id="theme-toggle" class="text-xl ml-4 hover:text-accent transition-colors">🌙</button>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-gray-300 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium">À propos</a>
+                <a href="#services" class="text-gray-300 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#booking" class="text-gray-300 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium">Réservation</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium">Témoignages</a>
+                <a href="#contact" class="text-gray-300 hover:text-yellow-500 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
         </div>
-        
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-button" class="text-gray-800 dark:text-white focus:outline-none">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      
-      <div id="mobile-menu" class="mobile-menu md:hidden">
-        <div class="px-2 pt-2 pb-4 space-y-1">
-          <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
-          <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
-          <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Services</a>
-          <a href="#work" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Work</a>
-          <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Testimonials</a>
-          <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
-          <button id="theme-toggle-mobile" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">Toggle Dark Mode</button>
-        </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero -->
-  <section id="home" class="relative h-screen pt-20">
-    <div class="absolute inset-0">
-      <div id="slide1" class="hero-slide absolute inset-0 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2070&q=80')]"></div>
-      <div id="slide2" class="hero-slide absolute inset-0 opacity-0 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2070&q=80')]"></div>
-      <div id="slide3" class="hero-slide absolute inset-0 opacity-0 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2070&q=80')]"></div>
-      <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    </div>
-    
-    <div class="relative h-full flex items-center justify-center text-center px-4">
-      <div class="max-w-4xl text-white">
-        <div class="inline-block px-4 py-1 mb-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-          <span class="text-sm font-medium">Innovation Since 2018</span>
-        </div>
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">We Build <span class="gradient-text">Digital Experiences</span></h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">We help startups and businesses transform their ideas into powerful digital solutions that drive growth and engagement.</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#contact" class="bg-primary hover:bg-accent text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1">Start Your Project</a>
-          <a href="#services" class="border-2 border-white hover:border-accent text-white hover:text-accent px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1">Explore Services</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="absolute bottom-10 left-0 right-0 flex justify-center">
-      <a href="#about" class="animate-bounce text-white text-2xl">
-        <i class="fas fa-chevron-down"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="py-16 bg-white dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="p-6">
-          <div class="text-4xl font-bold text-primary dark:text-accent mb-2">150+</div>
-          <div class="text-gray-600 dark:text-gray-300">Projects Completed</div>
-        </div>
-        <div class="p-6">
-          <div class="text-4xl font-bold text-primary dark:text-accent mb-2">98%</div>
-          <div class="text-gray-600 dark:text-gray-300">Client Satisfaction</div>
-        </div>
-        <div class="p-6">
-          <div class="text-4xl font-bold text-primary dark:text-accent mb-2">50+</div>
-          <div class="text-gray-600 dark:text-gray-300">Happy Clients</div>
-        </div>
-        <div class="p-6">
-          <div class="text-4xl font-bold text-primary dark:text-accent mb-2">12</div>
-          <div class="text-gray-600 dark:text-gray-300">Awards Won</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section-hidden py-20 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center gap-12">
-        <div class="md:w-1/2 relative">
-          <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Our Team" class="w-full h-auto">
-            <div class="absolute -bottom-6 -right-6 bg-primary dark:bg-accent p-4 rounded-lg shadow-lg">
-              <div class="text-white text-2xl font-bold">8+ Years</div>
-              <div class="text-white text-sm">Experience</div>
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="sound-wave mb-8">
+                <div class="wave" style="left: 0%; animation-delay: 0s;"></div>
+                <div class="wave" style="left: 15%; animation-delay: 0.2s;"></div>
+                <div class="wave" style="left: 30%; animation-delay: 0.4s;"></div>
+                <div class="wave" style="left: 45%; animation-delay: 0.6s;"></div>
+                <div class="wave" style="left: 60%; animation-delay: 0.8s;"></div>
+                <div class="wave" style="left: 75%; animation-delay: 1s;"></div>
+                <div class="wave" style="left: 90%; animation-delay: 1.2s;"></div>
             </div>
-          </div>
-        </div>
-        
-        <div class="md:w-1/2">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">About <span class="gradient-text">Solvexa Labs</span></h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            Founded in 2018, Solvexa Labs is a digital innovation studio specializing in web and mobile app development, UI/UX design, and digital strategy. We combine technical expertise with creative vision to deliver exceptional digital products.
-          </p>
-          <p class="text-gray-600 dark:text-gray-300 mb-8">
-            Our team of passionate designers, developers, and strategists work collaboratively to transform your ideas into reality. We believe in building long-term relationships with our clients by delivering measurable results.
-          </p>
-          
-          <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="flex items-center">
-              <div class="bg-primary/10 dark:bg-accent/10 p-2 rounded-full mr-3">
-                <i class="fas fa-check text-primary dark:text-accent"></i>
-              </div>
-              <span class="text-gray-700 dark:text-gray-200">Quality Assurance</span>
-            </div>
-            <div class="flex items-center">
-              <div class="bg-primary/10 dark:bg-accent/10 p-2 rounded-full mr-3">
-                <i class="fas fa-check text-primary dark:text-accent"></i>
-              </div>
-              <span class="text-gray-700 dark:text-gray-200">Agile Development</span>
-            </div>
-            <div class="flex items-center">
-              <div class="bg-primary/10 dark:bg-accent/10 p-2 rounded-full mr-3">
-                <i class="fas fa-check text-primary dark:text-accent"></i>
-              </div>
-              <span class="text-gray-700 dark:text-gray-200">User-Centric</span>
-            </div>
-            <div class="flex items-center">
-              <div class="bg-primary/10 dark:bg-accent/10 p-2 rounded-full mr-3">
-                <i class="fas fa-check text-primary dark:text-accent"></i>
-              </div>
-              <span class="text-gray-700 dark:text-gray-200">Innovative Solutions</span>
-            </div>
-          </div>
-          
-          <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-accent text-white rounded-lg font-medium transition-colors duration-300">
-            Learn More
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="section-hidden py-20 bg-white dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 text-sm font-semibold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 rounded-full mb-4">What We Offer</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our <span class="gradient-text">Services</span></h2>
-        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">We provide comprehensive digital solutions tailored to your business needs.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service 1 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-code text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Web Development</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Custom websites built with modern technologies like React, Next.js, and Tailwind CSS for optimal performance and user experience.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-        
-        <!-- Service 2 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-mobile-alt text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mobile App Development</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Cross-platform mobile applications using Flutter and React Native that work seamlessly on both iOS and Android devices.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-        
-        <!-- Service 3 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-paint-brush text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">UI/UX Design</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Beautiful, intuitive interfaces designed to enhance user engagement and drive conversions through thoughtful user experiences.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-        
-        <!-- Service 4 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-search-dollar text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Digital Marketing</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Comprehensive digital marketing strategies including SEO, content marketing, and social media to grow your online presence.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-        
-        <!-- Service 5 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-cloud text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Cloud Solutions</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Scalable cloud infrastructure and serverless architectures to ensure your applications perform at their best under any load.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-        
-        <!-- Service 6 -->
-        <div class="service-card bg-white dark:bg-gray-700 rounded-xl p-8 shadow-md transition-all duration-300">
-          <div class="w-14 h-14 bg-primary/10 dark:bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-            <i class="fas fa-chart-line text-2xl text-primary dark:text-accent"></i>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Business Analytics</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">
-            Data-driven insights and analytics to help you understand your users and make informed business decisions.
-          </p>
-          <a href="#" class="inline-flex items-center text-primary dark:text-accent font-medium">
-            Learn more
-            <i class="fas fa-arrow-right ml-2"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work Process -->
-  <section class="section-hidden py-20 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 text-sm font-semibold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 rounded-full mb-4">Our Approach</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Work <span class="gradient-text">Process</span></h2>
-        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">A structured methodology to ensure project success at every stage.</p>
-      </div>
-      
-      <div class="relative">
-        <div class="hidden lg:block absolute left-1/2 top-0 h-full w-0.5 bg-gradient-to-b from-primary to-accent transform -translate-x-1/2"></div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <!-- Step 1 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pr-16">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">1</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Discovery</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                We start by understanding your business goals, target audience, and project requirements through in-depth discussions and research.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Step 2 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pl-16 lg:mt-20">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">2</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Planning</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                We create a detailed project plan with milestones, deliverables, and timelines to ensure smooth execution.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Step 3 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pr-16 lg:mt-20">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">3</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Design</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Our designers create wireframes and high-fidelity mockups that align with your brand identity and user expectations.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Step 4 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pl-16 lg:mt-20">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">4</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Development</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Our developers bring the designs to life using the latest technologies while following best practices for performance and security.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Step 5 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pr-16 lg:mt-20">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">5</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Testing</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                We rigorously test the product across devices and scenarios to ensure flawless functionality and user experience.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Step 6 -->
-          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:pl-16 lg:mt-20">
-            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center">
-              <span class="text-2xl font-bold text-primary dark:text-accent">6</span>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Launch & Support</h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                We deploy the product and provide ongoing support, maintenance, and updates to keep it running smoothly.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="work" class="section-hidden py-20 bg-white dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 text-sm font-semibold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 rounded-full mb-4">Our Portfolio</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured <span class="gradient-text">Work</span></h2>
-        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">Explore some of our recent projects that showcase our expertise and creativity.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="E-commerce Platform" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">E-commerce Platform</h3>
-            <p class="text-gray-200 mb-4">A custom e-commerce solution with advanced product filtering and seamless checkout.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">React</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Node.js</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">MongoDB</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 2 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1467232004584-a241de8b9c40?auto=format&fit=crop&w=800&q=80" alt="Fitness App" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Fitness Tracking App</h3>
-            <p class="text-gray-200 mb-4">A mobile app that helps users track workouts, nutrition, and progress with AI recommendations.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Flutter</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Firebase</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">AI</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="SaaS Dashboard" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Analytics Dashboard</h3>
-            <p class="text-gray-200 mb-4">A comprehensive SaaS dashboard with real-time data visualization and reporting tools.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Next.js</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Tailwind CSS</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">D3.js</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 4 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Healthcare Portal" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Healthcare Portal</h3>
-            <p class="text-gray-200 mb-4">A secure patient portal with appointment scheduling, telemedicine, and health record access.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Angular</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">.NET</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">HIPAA</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 5 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80" alt="Education Platform" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">E-learning Platform</h3>
-            <p class="text-gray-200 mb-4">An interactive online learning platform with video courses, quizzes, and progress tracking.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Vue.js</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Laravel</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">AWS</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 6 -->
-        <div class="work-item relative rounded-xl overflow-hidden shadow-lg group">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Fintech App" class="w-full h-64 object-cover">
-          <div class="work-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Banking App</h3>
-            <p class="text-gray-200 mb-4">A mobile banking application with biometric authentication and financial management tools.</p>
-            <div class="flex space-x-2">
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">React Native</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">GraphQL</span>
-              <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Blockchain</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="#" class="inline-flex items-center px-6 py-3 border border-primary dark:border-accent text-primary dark:text-accent rounded-lg font-medium hover:bg-primary/10 dark:hover:bg-accent/10 transition-colors duration-300">
-          View All Projects
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="section-hidden py-20 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 text-sm font-semibold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 rounded-full mb-4">Client Feedback</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">What Our <span class="gradient-text">Clients Say</span></h2>
-        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">Don't just take our word for it. Here's what our clients have to say about working with us.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Testimonial 1 -->
-        <div class="testimonial-card bg-white dark:bg-gray-700 rounded-xl p-8">
-          <div class="flex items-center mb-6">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-900 dark:text-white">Sarah Johnson</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">CEO, TechStart Inc.</p>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            "Solvexa Labs transformed our outdated website into a modern, high-performing platform. Their attention to detail and technical expertise exceeded our expectations."
-          </p>
-          <div class="flex text-yellow-400">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-        </div>
-        
-        <!-- Testimonial 2 -->
-        <div class="testimonial-card bg-white dark:bg-gray-700 rounded-xl p-8">
-          <div class="flex items-center mb-6">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-900 dark:text-white">Michael Chen</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Founder, HealthTrack</p>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            "The mobile app developed by Solvexa Labs has been instrumental in our company's growth. Their team was responsive, professional, and delivered ahead of schedule."
-          </p>
-          <div class="flex text-yellow-400">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-        </div>
-        
-        <!-- Testimonial 3 -->
-        <div class="testimonial-card bg-white dark:bg-gray-700 rounded-xl p-8">
-          <div class="flex items-center mb-6">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-900 dark:text-white">Emily Rodriguez</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Marketing Director, EduLearn</p>
-            </div>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">
-            "From design to development, Solvexa Labs demonstrated exceptional skill and creativity. Our new platform has significantly improved user engagement and conversions."
-          </p>
-          <div class="flex text-yellow-400">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section-hidden py-20 gradient-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
-        <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-          Whether you have a clear vision or just an idea, we're here to help you bring it to life. Let's create something amazing together.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#contact" class="bg-white text-primary px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300">Get a Free Quote</a>
-          <a href="tel:+1234567890" class="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white/10 transition-colors duration-300">
-            <i class="fas fa-phone mr-2"></i> Call Us Now
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section-hidden py-20 bg-white dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row gap-12">
-        <div class="lg:w-1/2">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Get In <span class="gradient-text">Touch</span></h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-8">
-            Have a project in mind or want to discuss how we can help your business? Fill out the form and we'll get back to you within 24 hours.
-          </p>
-          
-          <div class="space-y-6">
-            <div class="flex items-start">
-              <div class="flex-shrink-0 bg-primary/10 dark:bg-accent/10 p-3 rounded-lg mr-4">
-                <i class="fas fa-map-marker-alt text-primary dark:text-accent"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Our Office</h4>
-                <p class="text-gray-600 dark:text-gray-300">123 Tech Street, Silicon Valley, CA 94025</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="flex-shrink-0 bg-primary/10 dark:bg-accent/10 p-3 rounded-lg mr-4">
-                <i class="fas fa-envelope text-primary dark:text-accent"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Email Us</h4>
-                <p class="text-gray-600 dark:text-gray-300">hello@solvexalabs.com</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="flex-shrink-0 bg-primary/10 dark:bg-accent/10 p-3 rounded-lg mr-4">
-                <i class="fas fa-phone text-primary dark:text-accent"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Call Us</h4>
-                <p class="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mt-8">
-            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Follow Us</h4>
-            <div class="flex space-x-4">
-              <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-accent transition-colors duration-300">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-accent transition-colors duration-300">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-accent transition-colors duration-300">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-accent transition-colors duration-300">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="lg:w-1/2">
-          <form class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
-                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:focus:ring-accent dark:focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300" placeholder="John Doe">
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:focus:ring-accent dark:focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300" placeholder="john@example.com">
-              </div>
-            </div>
-            
-            <div>
-              <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
-              <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:focus:ring-accent dark:focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300" placeholder="How can we help?">
-            </div>
-            
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:focus:ring-accent dark:focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300" placeholder="Tell us about your project..."></textarea>
-            </div>
-            
-            <div>
-              <button type="submit" class="w-full bg-primary hover:bg-accent text-white px-6 py-4 rounded-lg font-medium transition-colors duration-300">
-                Send Message
-                <i class="fas fa-paper-plane ml-2"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-          <h3 class="text-xl font-bold mb-4 flex items-center">
-            <span class="gradient-text">SolvexaLabs</span>
-          </h3>
-          <p class="text-gray-400 mb-4">
-            We build digital experiences that transform businesses and delight users.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-              <i class="fab fa-twitter"></i>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Là où votre son <span class="text-yellow-500">prend vie</span></h1>
+            <p class="text-xl md:text-2xl mb-8">Studio d'enregistrement professionnel pour artistes exigeants</p>
+            <a href="#booking" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                Réserver une session
             </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
         </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Services</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Web Development</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Mobile App Development</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">UI/UX Design</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Digital Marketing</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cloud Solutions</a></li>
-          </ul>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">À propos de <span class="text-yellow-500">Studio Plus</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Studio d'enregistrement" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg mb-6">
+                        Fondé par Solvexa Labs, <span class="text-yellow-500 font-medium">Studio Plus</span> est bien plus qu'un simple studio d'enregistrement. C'est un espace créatif où les artistes peuvent donner vie à leur vision musicale avec l'aide de professionnels passionnés.
+                    </p>
+                    <p class="text-lg mb-6">
+                        Notre équipe expérimentée met à votre disposition un équipement haut de gamme et une acoustique soigneusement étudiée pour capturer chaque nuance de votre performance.
+                    </p>
+                    <p class="text-lg">
+                        Que vous soyez musicien, podcasteur ou artiste vocal, nous vous offrons un environnement inspirant où la qualité du son rencontre la passion de la création.
+                    </p>
+                </div>
+            </div>
         </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Company</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Our Team</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Careers</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
-          </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos <span class="text-yellow-500">Services</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-black p-8 rounded-lg border border-gray-800 transition duration-300 hover:border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Enregistrement vocal</h3>
+                    <p class="text-gray-300">
+                        Captation professionnelle de voix avec des micros haut de gamme et une acoustique optimisée.
+                    </p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card bg-black p-8 rounded-lg border border-gray-800 transition duration-300 hover:border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mixage & Mastering</h3>
+                    <p class="text-gray-300">
+                        Polissage de vos enregistrements pour un son professionnel prêt à être diffusé.
+                    </p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card bg-black p-8 rounded-lg border border-gray-800 transition duration-300 hover:border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-podcast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Production de podcasts</h3>
+                    <p class="text-gray-300">
+                        Espace dédié et équipement spécialisé pour créer des podcasts de qualité professionnelle.
+                    </p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card bg-black p-8 rounded-lg border border-gray-800 transition duration-300 hover:border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Publicité audio</h3>
+                    <p class="text-gray-300">
+                        Création de jingles et spots publicitaires avec des voix-off professionnelles.
+                    </p>
+                </div>
+            </div>
         </div>
-        
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-          <p class="text-gray-400 mb-4">
-            Subscribe to our newsletter for the latest updates and insights.
-          </p>
-          <form class="flex">
-            <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-900">
-            <button type="submit" class="bg-primary hover:bg-accent px-4 py-2 rounded-r-lg transition-colors duration-300">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Réserver <span class="text-yellow-500">votre session</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="bg-black bg-opacity-80 rounded-lg shadow-xl p-8 border border-gray-800">
+                <form id="booking-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nom complet</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                        </div>
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-300 mb-1">Date souhaitée</label>
+                            <input type="date" id="date" name="date" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-gray-300 mb-1">Service demandé</label>
+                        <select id="service" name="service" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                            <option value="">Sélectionnez un service</option>
+                            <option value="recording">Enregistrement vocal/musical</option>
+                            <option value="mixing">Mixage & Mastering</option>
+                            <option value="podcast">Production de podcast</option>
+                            <option value="advertising">Publicité audio/voix-off</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message (facultatif)</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white"></textarea>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition duration-300">
+                            Envoyer la demande
+                        </button>
+                        <a href="https://wa.me/1234567890" class="text-yellow-500 hover:text-yellow-400 flex items-center">
+                            <i class="fab fa-whatsapp text-2xl mr-2"></i>
+                            Réserver via WhatsApp
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-      
-      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-400 text-sm">
-          &copy; 2023 Solvexa Labs. All rights reserved.
-        </p>
-        <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Cookies</a>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-900 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ce qu'ils <span class="text-yellow-500">disent de nous</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-black p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "Studio Plus a transformé ma musique. Leur expertise en mixage a donné à mes morceaux une qualité professionnelle que je n'aurais jamais pu obtenir seul."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-yellow-500 font-bold mr-4">
+                            JD
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Jean Dupont</h4>
+                            <p class="text-sm text-gray-400">Musicien indépendant</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-black p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "L'ambiance du studio est incroyablement inspirante. L'équipe est patiente et professionnelle, ce qui a rendu mon expérience d'enregistrement vraiment agréable."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-yellow-500 font-bold mr-4">
+                            MS
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Marie Simon</h4>
+                            <p class="text-sm text-gray-400">Chanteuse</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-black p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "Nous avons enregistré notre podcast dans plusieurs studios, mais Studio Plus est de loin le meilleur. La qualité sonore est exceptionnelle et l'équipe très réactive."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-yellow-500 font-bold mr-4">
+                            TC
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Thomas et Clara</h4>
+                            <p class="text-sm text-gray-400">Podcasteurs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nous <span class="text-yellow-500">contacter</span></h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-black bg-opacity-80 rounded-lg shadow-xl p-8 border border-gray-800 h-full">
+                        <h3 class="text-xl font-bold mb-6">Coordonnées</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Adresse</h4>
+                                    <p class="text-gray-300">123 Rue de la Musique, 75000 Paris</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Téléphone</h4>
+                                    <p class="text-gray-300">+33 1 23 45 67 89</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <p class="text-gray-300">contact@studioplus.fr</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 text-xl mr-4 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Horaires</h4>
+                                    <p class="text-gray-300">Lundi - Vendredi : 10h - 20h</p>
+                                    <p class="text-gray-300">Samedi : 10h - 18h</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-4">Suivez-nous</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-300 hover:text-yellow-500 text-2xl">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-yellow-500 text-2xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-yellow-500 text-2xl">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-yellow-500 text-2xl">
+                                    <i class="fab fa-spotify"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-black bg-opacity-80 rounded-lg shadow-xl p-8 border border-gray-800 h-full">
+                        <h3 class="text-xl font-bold mb-6">Envoyez-nous un message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-gray-300 mb-1">Nom</label>
+                                    <input type="text" id="contact-name" name="contact-name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                    <input type="email" id="contact-email" name="contact-email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-subject" class="block text-sm font-medium text-gray-300 mb-1">Sujet</label>
+                                <input type="text" id="contact-subject" name="contact-subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                <textarea id="contact-message" name="contact-message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 text-white"></textarea>
+                            </div>
+                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition duration-300 w-full">
+                                Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615638468!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1623258130001!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
-  </footer>
 
-  <!-- Back to Top -->
-  <a href="#" class="back-to-top bg-primary hover:bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <span class="text-gold-500 font-bold text-2xl">STUDIO<span class="text-yellow-500">+</span></span>
+                    <p class="text-gray-400 mt-4 max-w-xs">
+                        Votre partenaire pour des enregistrements professionnels et une production audio de qualité.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-white font-bold mb-4">Liens rapides</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-yellow-500">À propos</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-yellow-500">Services</a></li>
+                            <li><a href="#booking" class="text-gray-400 hover:text-yellow-500">Réservation</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-yellow-500">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-4">Services</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Enregistrement</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Mixage</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Podcast</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Voix-off</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Mentions légales</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">Politique de confidentialité</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-yellow-500">CGV</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2023 Studio Plus by Solvexa Labs. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-yellow-500">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-500">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-500">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-500">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script>
-    // Dark Mode
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    const htmlEl = document.documentElement;
-    
-    if (localStorage.getItem('theme') === 'dark' || 
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      htmlEl.classList.add('dark');
-      themeToggle.innerText = '☀️';
-    }
-    
-    function toggleTheme() {
-      htmlEl.classList.toggle('dark');
-      if (htmlEl.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        themeToggle.innerText = '☀️';
-      } else {
-        localStorage.setItem('theme', 'light');
-        themeToggle.innerText = '🌙';
-      }
-    }
-    
-    themeToggle.addEventListener('click', toggleTheme);
-    themeToggleMobile.addEventListener('click', toggleTheme);
-    
-    // Mobile Menu
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-    
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-      });
-    });
-    
-    // Slideshow
-    let currentSlide = 1;
-    setInterval(() => {
-      document.getElementById(`slide${currentSlide}`).classList.add('opacity-0');
-      currentSlide = currentSlide % 3 + 1;
-      document.getElementById(`slide${currentSlide}`).classList.remove('opacity-0');
-    }, 5000);
-    
-    // Scroll Reveal
-    const allSections = document.querySelectorAll('.section-hidden');
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.remove('section-hidden');
-        entry.target.classList.add('section-visible');
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.15 });
-    
-    allSections.forEach(section => sectionObserver.observe(section));
-    
-    // Back to Top
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) backToTop.classList.add('active');
-      else backToTop.classList.remove('active');
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/13056102397" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-[#128C7E] transition-colors duration-300 z-50 animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
         
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
+        // Check localStorage for theme preference, default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            document.documentElement.classList.add('light-mode');
+            themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            document.documentElement.classList.remove('light-mode');
+            themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
         }
-      });
-    });
-    
-    // Form submission
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
-      });
-    }
-  </script>
+        
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            const theme = isLight ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            themeIcon.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            
+            // Force redraw to prevent animation glitches
+            document.body.style.visibility = 'hidden';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.visibility = 'visible';
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form submission handling
+        const bookingForm = document.getElementById('booking-form');
+        const contactForm = document.getElementById('contact-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci pour votre demande de réservation ! Nous vous contacterons bientôt pour confirmer.');
+            bookingForm.reset();
+        });
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            contactForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animation for sound waves in hero section
+        const waves = document.querySelectorAll('.wave');
+        waves.forEach((wave, index) => {
+            wave.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>
